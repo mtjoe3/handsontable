@@ -100,16 +100,12 @@ class Event {
       this.eventManager.addEventListener(this.wtTable.holder, 'mousedown', event => this.onMouseDown(event));
     };
 
-    if (isMobileBrowser()) {
+    // Mobile devices or PC like devices which support both methods (touchscreen and ability to plug-in mouse).
+    if (isMobileBrowser() || isTouchSupported()) {
       initTouchEvents();
-    } else {
-      // PC like devices which support both methods (touchscreen and ability to plug-in mouse).
-      if (isTouchSupported()) {
-        initTouchEvents();
-      }
-
-      initMouseEvents();
     }
+
+    initMouseEvents();
   }
 
   /**
